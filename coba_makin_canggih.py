@@ -16,32 +16,30 @@ class User :
         self.content = ["3rd party movie", "Sport(Football/Soccer, F1, Basketball)", "Pacflix Original Series/Movies"]
         self.download = True
         self.device = [1, 2, 4]
-        try :
 
-            if self.current_plan.lower() == "basic":
-                self.kualitas = self.kualitas[0]
-                self.content = self.content[0]
-                self.download = self.download
-                self.harga = self.dict_harga_plan["basic"]
-                self.device = self.device[0]
-            
-            elif self.current_plan.lower() == "standart":
-                self.kualitas = self.kualitas[0:2]
-                self.content = self.content[0:2]
-                self.download = self.download
-                self.harga = self.dict_harga_plan["standart"]
-                self.device = self.device[1]
-            
-            elif self.current_plan.lower() == "premium":
-                self.kualitas = self.kualitas[0:]
-                self.content = self.content[0:]
-                self.download = self.download
-                self.harga = self.dict_harga_plan["premium"]
-                self.device = self.device[2]
-            else :
-                raise ValueError ("masukkan nama plan dengan benar")
-        except :
-            ValueError
+        if self.current_plan.lower() == "basic":
+            self.kualitas = self.kualitas[0]
+            self.content = self.content[0]
+            self.download = self.download
+            self.harga = self.dict_harga_plan["basic"]
+            self.device = self.device[0]
+        
+        elif self.current_plan.lower() == "standart":
+            self.kualitas = self.kualitas[0:2]
+            self.content = self.content[0:2]
+            self.download = self.download
+            self.harga = self.dict_harga_plan["standart"]
+            self.device = self.device[1]
+        
+        elif self.current_plan.lower() == "premium":
+            self.kualitas = self.kualitas[0:]
+            self.content = self.content[0:]
+            self.download = self.download
+            self.harga = self.dict_harga_plan["premium"]
+            self.device = self.device[2]
+        else :
+            raise TypeError ("masukkan nama plan dengan benar")
+    
         
         return f"benefityang anda dapatkan berupa resolusi {self.kualitas} dengan konten {self.content}, serta anda dapat menghubungkan akun anda ke {self.device} device berbeda"
         
