@@ -1,5 +1,5 @@
 from tabulate import tabulate
-# ini cuman buat tabel aja
+
 headers = ["Fasilitas", "basic", "standart", "premium"]
 data_fasilitas = [
     {"Harga": 120000, "Kualitas": "SD", "Konten": "3rd party movie", "Download_movie": True, "Number of Device" : 1},
@@ -22,16 +22,14 @@ data_tiap = [daftar_harga,daftar_kualitas,daftar_konten,daftar_download,daftar_d
 print(tabulate(data_tiap, headers, tablefmt="grid"))
 print("\nApabila anda pengguna baru, anda mendapatkan diskon dengan memasukkan referal code 'BPANDA'")
 
-daftar_user = ["umi"] # ini ceritanya nama yang udah terdaftar
-# tujuan : kalau input username = "umi" dia bakal nge-"trigger" class User
-
-class PacFlix: # Parent Class
+daftar_user = ["umi"]
+class PacFlix:
     def __init__ (self,username, current_plan, duration_plan):
         self.username = username
         self.current_plan = current_plan
         self.duration_plan = duration_plan
     
-    def Facility_table (self): # buat plan-plannya sama fasilitas - fasilitasnya
+    def Facility_table (self):
         self.headers = ["basic", "standart", "premium"]
         self.data_fasilitas = [
             {"Harga": 120000, "Kualitas": "SD", "Konten": "3rd party movie", "Download_movie": True, "Number of Device" : 1},
@@ -40,10 +38,7 @@ class PacFlix: # Parent Class
         ]
     
     def check_benefit (self):
-        self.Facility_table() 
-        # self.Facility_table() disini supaya method check_benefit nge-"triger" atau ngerjain self.facility_table, perlu atau nggak ?
-        # for this case, PERLU !!! supaya.... walaupun kita cuman manggil check_benefit dia juga sekalian ngejalanin self.Facility_table
-        # sehingga kita bisa bebas makai variabel self.headers dan self.data_fasilitas (yang ada di self.Facility_table) di loop kita
+        self.Facility_table()
         for i in range(len(self.headers)) :
             if self.current_plan.lower() == self.headers[i]:
                 self.kualitas = self.data_fasilitas[i]["Kualitas"]
@@ -103,23 +98,16 @@ class New_user (PacFlix):
         self.final_price = self.harga - (self.harga*self.discount)
         return f"Harga yang perlu di bayarkan = {self.final_price}"
 
-# ini supaya lebih interaktif pas di-Run
+
 nama_user = input("\nUsername : ").lower()
 current_plan_user = input("Plan yang ingin diambil (Basic, Standart, Premium): ").lower()
 durasi_user = int(input("Durasi anda telah berlangganan (dalam bulan): "))
 
 
 Type_user = New_user if nama_user not in daftar_user or durasi_user == 0 else User
-# Tujuan : buat nentuin pakai class User atau class New_user
-# maksud code ini kalau kamu input username selain yang ada di daftar_user(line 25) atau kamu input durasi-nya 0
-# maka dia bakal pakai class New_User
 
 user_1 = Type_user(nama_user, current_plan_user, durasi_user)
-# kenapa Pakai Type_user ? bukan User atau New_user ? seperti -> (user_1 = User(bla,bla....))
-# karena di variabel Type_User udah nenentuin makai class yang mana
-
-
-daftar_user.append(user_1.username) #abaikan ini
+daftar_user.append(user_1.username)
 print (f"\nUsername {user_1.username} telah memilih plan {user_1.current_plan} dengan diskon sebesar {user_1.diskon} sehingga total biaya sebesar Rp {user_1.final_price}\n")
 
 print (f"1. benefit yang anda dapatkan berupa resolusi {user_1.kualitas}")

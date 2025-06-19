@@ -1,3 +1,6 @@
+
+daftar_user = []
+
 class User :
     def __init__ (self, username, current_plan, duration_plan):
         self.username = username
@@ -102,14 +105,17 @@ class New_user :
         self.final_price = self.harga - (self.harga*self.discount)
         return f"Harga yang perlu di bayarkan = {self.final_price}"
 
-# myuser = User("andi", "Basic", 13 )
 
-# print(myuser.check_plan("andi"))
-# print(myuser.check_benefit())
-# print(f"{myuser.upgrade_plan("Premium")}\n")
-# print(myuser.check_benefit())
 
-newuser = New_user("Raka")
-print(newuser.pick_plan("Basic", "rakakecil"))
+
+# # myuser = User("andi", "Basic", 13 )
+
+# # print(myuser.check_plan("andi"))
+# # print(myuser.check_benefit())
+# # print(f"{myuser.upgrade_plan("Premium")}\n")
+# # print(myuser.check_benefit())
+
+# newuser = New_user("Raka")
+# print(newuser.pick_plan("Basic", "rakakecil"))
         
 
