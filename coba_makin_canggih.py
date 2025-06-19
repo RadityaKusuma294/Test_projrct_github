@@ -104,24 +104,25 @@ class New_user (PacFlix):
         return f"Harga yang perlu di bayarkan = {self.final_price}"
 
 # ini supaya lebih interaktif pas di-Run
-nama_user = input("\nUsername : ").lower()
-current_plan_user = input("Plan yang ingin diambil (Basic, Standart, Premium): ").lower()
-durasi_user = int(input("Durasi anda telah berlangganan (dalam bulan): "))
+if __name__ == "__main__":
+    nama_user = input("\nUsername : ").lower()
+    current_plan_user = input("Plan yang ingin diambil (Basic, Standart, Premium): ").lower()
+    durasi_user = int(input("Durasi anda telah berlangganan (dalam bulan): "))
 
 
-Type_user = New_user if nama_user not in daftar_user or durasi_user == 0 else User
-# Tujuan : buat nentuin pakai class User atau class New_user
-# maksud code ini kalau kamu input username selain yang ada di daftar_user(line 25) atau kamu input durasi-nya 0
-# maka dia bakal pakai class New_User
+    Type_user = New_user if nama_user not in daftar_user or durasi_user == 0 else User
+    # Tujuan : buat nentuin pakai class User atau class New_user
+    # maksud code ini kalau kamu input username selain yang ada di daftar_user(line 25) atau kamu input durasi-nya 0
+    # maka dia bakal pakai class New_User
 
-user_1 = Type_user(nama_user, current_plan_user, durasi_user)
-# kenapa Pakai Type_user ? bukan User atau New_user ? seperti -> (user_1 = User(bla,bla....))
-# karena di variabel Type_User udah nenentuin makai class yang mana
+    user_1 = Type_user(nama_user, current_plan_user, durasi_user)
+    # kenapa Pakai Type_user ? bukan User atau New_user ? seperti -> (user_1 = User(bla,bla....))
+    # karena di variabel Type_User udah nenentuin makai class yang mana
 
 
-daftar_user.append(user_1.username) #abaikan ini
-print (f"\nUsername {user_1.username} telah memilih plan {user_1.current_plan} dengan diskon sebesar {user_1.diskon} sehingga total biaya sebesar Rp {user_1.final_price}\n")
+    daftar_user.append(user_1.username) #abaikan ini
+    print (f"\nUsername {user_1.username} telah memilih plan {user_1.current_plan} dengan diskon sebesar {user_1.diskon} sehingga total biaya sebesar Rp {user_1.final_price}\n")
 
-print (f"1. benefit yang anda dapatkan berupa resolusi {user_1.kualitas}")
-print (f"2. konten {user_1.content}")
-print( f"3. serta anda dapat menghubungkan akun anda ke {user_1.device} device\n")
+    print (f"1. benefit yang anda dapatkan berupa resolusi {user_1.kualitas}")
+    print (f"2. konten {user_1.content}")
+    print( f"3. serta anda dapat menghubungkan akun anda ke {user_1.device} device\n")
